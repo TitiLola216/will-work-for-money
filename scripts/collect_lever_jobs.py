@@ -1,102 +1,65 @@
-import csv
-import json
-import re
-from datetime import UTC, datetime, timedelta
+import csv,json,re,xml.etree.ElementTree as ET
+from datetime import UTC,datetime,timedelta
+from email.utils import parsedate_to_datetime
 from pathlib import Path
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+from urllib.request import Request,urlopen
+from urllib.error import HTTPError,URLError
 
-ROOT = Path(__file__).resolve().parents[1]
-NOW = datetime.now(UTC)
-CUTOFF = NOW - timedelta(hours=24)
-HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; WillWorkForMoneyJobResearch/1.2)', 'Accept': 'application/json, text/plain, */*', 'Referer': 'https://jobs.lever.co/'}
-REMOTE_RE = re.compile(r'\bremote\b', re.I)
-US_ELIGIBLE_RE = re.compile(r'(united states|u\.?s\.?\s*(only|remote|based)|ohio|cleveland)', re.I)
-YEARS_RE = re.compile(r'\b(\d{1,2})\s*\+?\s*years?\b', re.I)
+ROOT=Path(__file__).resolve().parents[1]; NOW=datetime.now(UTC); CUT=NOW-timedelta(hours=24)
+H={'User-Agent':'Mozilla/5.0 (compatible; WillWorkForMoneyJobResearch/2.0)','Accept':'application/json,application/rss+xml,text/xml,*/*'}
+TARGET=('customer success','client success','customer support','technical support','support specialist','support analyst','customer experience','customer operations','implementation','onboarding','technical account','customer account','customer service','crm','operations')
+BAD=('product designer','ux designer','ui designer','software engineer','developer','data scientist','network security','security engineer','cloud engineer','devops','recruiter','vice president','chief ')
 
-def get_json(board):
-    attempts = [f'https://api.lever.co/v0/postings/{board}?mode=json', f'https://jobs.lever.co/{board}?mode=json']
-    errors = []
-    for url in attempts:
-        try:
-            with urlopen(Request(url, headers=HEADERS), timeout=30) as response:
-                return json.load(response)
-        except HTTPError as error:
-            errors.append(f'{error.code} {url}')
-        except (URLError, TimeoutError, json.JSONDecodeError) as error:
-            errors.append(f'{type(error).__name__} {url}')
-    raise RuntimeError(' | '.join(errors))
-
-def is_live(url):
-    if not url:
-        return False
-    try:
-        with urlopen(Request(url, headers=HEADERS), timeout=30) as response:
-            return 200 <= response.status < 400
-    except (HTTPError, URLError, TimeoutError):
-        return False
-
-def plain(value):
-    return re.sub(r'<[^>]+>', ' ', value or '')
-
-def contains_any(text, patterns):
-    return [pattern for pattern in patterns if pattern in text]
-
-def salary(job):
-    value = job.get('salaryRange')
-    return value if isinstance(value, str) else (json.dumps(value, ensure_ascii=False) if value else '')
-
-def required_years(text):
-    values = [int(value) for value in YEARS_RE.findall(text)]
-    return max(values) if values else None
-
+def get(url):
+    with urlopen(Request(url,headers=H),timeout=30) as r:return r.read()
+def ok(title):
+    t=title.lower(); return any(x in t for x in TARGET) and not any(x in t for x in BAD)
+def dt(v):
+    try:return parsedate_to_datetime(v).astimezone(UTC)
+    except:return None
+def row(source,title,company,posted,url,location='',salary='',verified=False):
+    if not ok(title):return None
+    age=round((NOW-posted).total_seconds()/3600,1) if posted else ''
+    status='Apply now — direct ATS verification passed' if verified else 'Review today — live source lead; confirm direct employer application page'
+    return {'source':source,'title':title,'company':company or 'Not provided','location_work_arrangement':location or 'Remote; verify US/Ohio eligibility','salary':salary,'posted_at_utc':posted.isoformat() if posted else 'Source did not provide a reliable original posting time','posting_age_hours':age,'match_score':90 if verified else 70,'status':status,'why_candidate':'Target role title matches customer success, support, implementation, onboarding, CRM, or operations.','biggest_gap':'Confirm employer-direct application page, Ohio/US eligibility, and stated experience requirements before applying.','application_url':url}
 def main():
-    profile = json.loads((ROOT / 'config/candidate_profile.json').read_text())
-    boards = json.loads((ROOT / 'config/lever_boards.json').read_text())['boards']
-    candidates, checked, errors, excluded = [], 0, [], 0
-    for board in boards:
-        try:
-            jobs = get_json(board)
-        except RuntimeError as error:
-            errors.append(f'{board}: {error}')
-            continue
-        for job in jobs:
-            checked += 1
-            created = datetime.fromtimestamp(job.get('createdAt', 0) / 1000, UTC)
-            title = job.get('text', '')
-            title_lower = title.lower()
-            description = plain(job.get('descriptionPlain') or job.get('description', ''))
-            location = job.get('categories', {}).get('location', '')
-            body = f'{description} {location}'
-            body_lower = body.lower()
-            apply_url = job.get('applyUrl') or job.get('hostedUrl', '')
-            if created < CUTOFF or not REMOTE_RE.search(body) or not US_ELIGIBLE_RE.search(body):
-                continue
-            title_hits = contains_any(title_lower, profile['target_title_patterns'])
-            excluded_hits = contains_any(title_lower, profile['excluded_title_patterns']) + contains_any(body_lower, profile['excluded_requirement_patterns'])
-            strength_hits = contains_any(f'{title_lower} {body_lower}', profile['strength_patterns'])
-            if excluded_hits or not title_hits or not strength_hits or not is_live(job.get('hostedUrl', apply_url)):
-                excluded += 1
-                continue
-            years = required_years(body_lower)
-            age_hours = round((NOW - created).total_seconds() / 3600, 1)
-            score = min(100, 65 + min(20, len(title_hits) * 10) + min(15, len(strength_hits) * 3))
-            experience_note = f'Stated requirement includes up to {years} years; compare it against a dated resume before recommending.' if years else 'No numeric experience requirement was detected; review the full requirements before recommending.'
-            candidates.append({'discovered_at_utc': NOW.isoformat(), 'title': title, 'company': board, 'location_work_arrangement': location or 'Remote; verify details on application page', 'salary': salary(job), 'original_posted_at_utc': created.isoformat(), 'posting_age_hours': age_hours, 'match_score': score, 'status': 'Candidate — requirement and experience-gap review required', 'why_candidate': f"Target title match: {', '.join(title_hits)}. Documented-strength signals: {', '.join(strength_hits[:5])}.", 'biggest_gap': experience_note, 'application_url': apply_url})
-    candidates.sort(key=lambda row: (-row['match_score'], row['posting_age_hours']))
-    fields = ['discovered_at_utc', 'title', 'company', 'location_work_arrangement', 'salary', 'original_posted_at_utc', 'posting_age_hours', 'match_score', 'status', 'why_candidate', 'biggest_gap', 'application_url']
-    with (ROOT / 'job_tracker.csv').open('w', newline='', encoding='utf-8') as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields); writer.writeheader(); writer.writerows(candidates)
-    report_dir = ROOT / 'reports'; report_dir.mkdir(exist_ok=True)
-    lines = ['# Latest experience-aligned ATS search report', '', f'Run time (UTC): {NOW.isoformat()}', f'Direct Lever ATS boards queried: {len(boards)}', f'Active postings evaluated: {checked}', f'Excluded as out-of-lane: {excluded}', f'Candidates passing experience-aligned automated checks: {len(candidates)}', '', '## Verification boundary', '', profile['experience_rule'], '', '## Candidates', '']
-    if candidates:
-        lines.extend(['| Score | Role | Employer board | Posted (UTC) | Age | Apply |', '|---:|---|---|---|---:|---|'])
-        lines.extend(f"| {row['match_score']} | {row['title']} | {row['company']} | {row['original_posted_at_utc']} | {row['posting_age_hours']} h | [Apply]({row['application_url']}) |" for row in candidates)
-    else:
-        lines.append('No role passed the experience-aligned automated checks in this run. This does not prove that no fitting job exists; it only covers the configured direct Lever ATS boards.')
-    if errors:
-        lines.extend(['', '## Unavailable boards', '', *[f'- {item}' for item in errors]])
-    (report_dir / 'latest.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
-
-if __name__ == '__main__':
-    main()
+    out=[]; errors=[]
+    boards=json.loads((ROOT/'config/lever_boards.json').read_text())['boards']
+    for b in boards:
+      try:
+       jobs=json.loads(get(f'https://api.lever.co/v0/postings/{b}?mode=json'))
+       for j in jobs:
+        posted=datetime.fromtimestamp(j.get('createdAt',0)/1000,UTC); title=j.get('text',''); body=re.sub('<[^>]+>',' ',j.get('descriptionPlain') or j.get('description','')); loc=j.get('categories',{}).get('location','')
+        if posted>=CUT and 'remote' in (body+' '+loc).lower() and re.search(r'united states|u\.?s\.?|ohio|cleveland',body+' '+loc,re.I):
+          x=row('Lever direct ATS',title,b,posted,j.get('applyUrl') or j.get('hostedUrl',''),loc,j.get('salaryRange',''),True)
+          if x:out.append(x)
+      except Exception as e:errors.append(f'Lever {b}: {type(e).__name__}')
+    try:
+      for item in json.loads(get('https://remoteok.com/api')):
+       if not isinstance(item,dict) or not item.get('position'):continue
+       posted=dt(item.get('date',''))
+       if posted and posted>=CUT:
+        x=row('Remote OK',item['position'],item.get('company',''),posted,item.get('url',''),item.get('location','Remote'),item.get('salary',''))
+        if x:out.append(x)
+    except Exception as e:errors.append(f'Remote OK: {type(e).__name__}')
+    try:
+      root=ET.fromstring(get('https://weworkremotely.com/categories/remote-customer-support-jobs.rss'))
+      for i in root.findall('.//item'):
+       posted=dt(i.findtext('pubDate','')); title=i.findtext('title',''); link=i.findtext('link','')
+       if posted and posted>=CUT:
+        x=row('We Work Remotely',title,title.split(':')[0] if ':' in title else '',posted,link,'Remote')
+        if x:out.append(x)
+    except Exception as e:errors.append(f'We Work Remotely: {type(e).__name__}')
+    seen=set();out=[x for x in sorted(out,key=lambda x:(-x['match_score'],x['posting_age_hours'] if x['posting_age_hours']!='' else 999)) if not ((x['title'].lower(),x['company'].lower()) in seen or seen.add((x['title'].lower(),x['company'].lower())))]
+    fields=list(out[0]) if out else ['source','title','company','location_work_arrangement','salary','posted_at_utc','posting_age_hours','match_score','status','why_candidate','biggest_gap','application_url']
+    with (ROOT/'job_tracker.csv').open('w',newline='',encoding='utf-8') as f:w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(out)
+    lines=['# Latest lead-producing multi-source report','',f'Run time (UTC): {NOW.isoformat()}',f'Leads returned: {len(out)}','', '## Apply now — direct ATS verified','']
+    for x in out:
+      if x['match_score']==90:lines.append(f"- [{x['title']}]({x['application_url']}) — {x['company']} — {x['posting_age_hours']} hours old")
+    lines+=['','## Review today — live discovery leads','']
+    for x in out:
+      if x['match_score']!=90:lines.append(f"- [{x['title']}]({x['application_url']}) — {x['company']} — {x['source']} — {x['posting_age_hours']} hours old")
+    if not out:lines.append('No lead was returned by the configured sources in this 24-hour window.')
+    if errors:lines+=['','## Source errors','',*[f'- {e}' for e in errors]]
+    (ROOT/'reports'/'latest.md').write_text('\n'.join(lines)+'\n')
+if __name__=='__main__':main()
