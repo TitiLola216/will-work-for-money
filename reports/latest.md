@@ -1,6 +1,6 @@
 # Latest experience-aligned ATS search report
 
-Run time (UTC): 2026-09-25T22:23:47.263797+00:00
+Run time (UTC): 2026-09-25T22:44:05.727013+00:00
 Direct Lever ATS boards queried: 9
 Active postings evaluated: 413
 Excluded as out-of-lane: 2
