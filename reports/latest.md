@@ -1,8 +1,8 @@
 # Latest no-key ATS search report
 
-Run time (UTC): 2026-09-25T07:00:57.894659+00:00
+Run time (UTC): 2026-09-25T14:21:04.425934+00:00
 Direct Lever ATS boards queried: 9
-Active postings evaluated: 415
+Active postings evaluated: 409
 Candidates passing automated checks: 2
 
 ## Verification boundary
@@ -13,8 +13,8 @@ These are candidates, not fully verified recommendations. The workflow verifies 
 
 | Score | Role | Employer board | Posted (UTC) | Age | Apply |
 |---:|---|---|---|---:|---|
-| 100 | Lead Product Designer | gohighlevel | 2026-09-25T04:55:05.223000+00:00 | 2.1 h | [Apply](https://jobs.lever.co/gohighlevel/36f7f221-8590-41cc-a9bf-9dd3f493bc35/apply) |
-| 65 | Technical Consultant - Network Security SASE | thinkahead | 2026-09-24T17:36:08.787000+00:00 | 13.4 h | [Apply](https://jobs.lever.co/thinkahead/6cf6d201-5b52-4875-8582-f155d8d64934/apply) |
+| 100 | Lead Product Designer | gohighlevel | 2026-09-25T04:55:05.223000+00:00 | 9.4 h | [Apply](https://jobs.lever.co/gohighlevel/36f7f221-8590-41cc-a9bf-9dd3f493bc35/apply) |
+| 65 | Technical Consultant - Network Security SASE | thinkahead | 2026-09-24T17:36:08.787000+00:00 | 20.7 h | [Apply](https://jobs.lever.co/thinkahead/6cf6d201-5b52-4875-8582-f155d8d64934/apply) |
 
 ## Unavailable boards
 
