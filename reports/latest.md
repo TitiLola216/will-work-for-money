@@ -1,6 +1,6 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-09-25T23:02:17.244136+00:00
+Run time (UTC): 2026-09-25T23:20:17.600394+00:00
 Leads returned: 0
 
 ## Apply now — direct ATS verified
