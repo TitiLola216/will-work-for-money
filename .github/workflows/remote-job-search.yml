@@ -7,7 +7,7 @@ on:
       - 'config/lever_boards.json'
       - 'scripts/collect_lever_jobs.py'
   schedule:
-    - cron: '20 * * * *'
+    - cron: '20 20 * * *'
   workflow_dispatch:
 
 permissions:
