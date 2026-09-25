@@ -1,6 +1,6 @@
 # Latest no-key ATS search report
 
-Run time (UTC): 2026-09-25T06:39:43.679241+00:00
+Run time (UTC): 2026-09-25T06:41:28.532089+00:00
 Direct Lever ATS boards queried: 12
 Active postings evaluated: 0
 Candidates passing automated checks: 0
