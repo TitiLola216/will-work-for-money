@@ -1,0 +1,27 @@
+{
+  "target_title_patterns": [
+    "customer success", "client success", "customer support", "technical support",
+    "support specialist", "support analyst", "customer experience", "customer operations",
+    "revenue operations", "business operations", "operations specialist", "operations coordinator",
+    "implementation", "onboarding", "technical account", "customer account",
+    "customer service", "crm administrator", "crm specialist", "systems administrator"
+  ],
+  "strength_patterns": [
+    "customer success", "customer support", "technical support", "client onboarding",
+    "implementation", "onboarding", "crm", "hubspot", "workflow", "automation",
+    "zapier", "make.com", "notion", "saas", "process improvement",
+    "scrum", "agile", "lean six sigma", "operations", "escalation"
+  ],
+  "excluded_title_patterns": [
+    "product designer", "ux designer", "ui designer", "graphic designer", "software engineer",
+    "developer", "data scientist", "data engineer", "network security", "security engineer",
+    "cloud engineer", "devops", "site reliability", "penetration tester", "recruiter",
+    "head of", "vice president", "chief "
+  ],
+  "excluded_requirement_patterns": [
+    "zscaler", "prisma access", "netskope", "casb", "ztna", "firewall",
+    "routing and switching", "network infrastructure", "product design portfolio",
+    "figma expertise", "visual design", "user interface design", "machine learning"
+  ],
+  "experience_rule": "Do not automatically recommend a role with a stated experience requirement unless the candidate’s dated employment history has been separately verified."
+}
