@@ -1,16 +1,13 @@
 {
   "boards": [
     "1password",
-    "asana",
-    "figma",
-    "fivetran",
-    "github",
-    "loom",
-    "mixpanel",
-    "netlify",
-    "plaid",
-    "postman",
-    "remote",
-    "snyk"
+    "applydigital",
+    "gohighlevel",
+    "voltus",
+    "ro",
+    "thinkahead",
+    "truv",
+    "outreach",
+    "canarytechnologies"
   ]
 }
