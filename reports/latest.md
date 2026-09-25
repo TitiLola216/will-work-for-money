@@ -1,20 +1,18 @@
-# Latest no-key ATS search report
+# Latest experience-aligned ATS search report
 
-Run time (UTC): 2026-09-25T14:21:04.425934+00:00
+Run time (UTC): 2026-09-25T14:48:02.781295+00:00
 Direct Lever ATS boards queried: 9
-Active postings evaluated: 409
-Candidates passing automated checks: 2
+Active postings evaluated: 410
+Excluded as out-of-lane: 2
+Candidates passing experience-aligned automated checks: 0
 
 ## Verification boundary
 
-These are candidates, not fully verified recommendations. The workflow verifies an active direct ATS response, direct application page reachability, Lever created-at timestamp within 24 hours, a relevant keyword, and explicit remote plus US/Ohio/Cleveland eligibility language. A person must still confirm the employer, original-posting semantics, complete requirements, and the documented experience-gap hard filter before a role is recommended.
+Do not automatically recommend a role with a stated experience requirement unless the candidate’s dated employment history has been separately verified.
 
 ## Candidates
 
-| Score | Role | Employer board | Posted (UTC) | Age | Apply |
-|---:|---|---|---|---:|---|
-| 100 | Lead Product Designer | gohighlevel | 2026-09-25T04:55:05.223000+00:00 | 9.4 h | [Apply](https://jobs.lever.co/gohighlevel/36f7f221-8590-41cc-a9bf-9dd3f493bc35/apply) |
-| 65 | Technical Consultant - Network Security SASE | thinkahead | 2026-09-24T17:36:08.787000+00:00 | 20.7 h | [Apply](https://jobs.lever.co/thinkahead/6cf6d201-5b52-4875-8582-f155d8d64934/apply) |
+No role passed the experience-aligned automated checks in this run. This does not prove that no fitting job exists; it only covers the configured direct Lever ATS boards.
 
 ## Unavailable boards
 
