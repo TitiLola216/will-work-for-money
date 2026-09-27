@@ -1,6 +1,6 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-09-26T22:56:49.761119+00:00
+Run time (UTC): 2026-09-27T23:07:20.963069+00:00
 Leads returned: 1
 
 ## Apply now — direct ATS verified
@@ -8,7 +8,7 @@ Leads returned: 1
 
 ## Review today — live discovery leads
 
-- [Ping Identity: Customer Success Manager](https://weworkremotely.com/remote-jobs/ping-identity-customer-success-manager-1) — Ping Identity — We Work Remotely — 15.4 hours old
+- [Expel: Customer Success Manager, Scale](https://weworkremotely.com/remote-jobs/expel-customer-success-manager-scale) — Expel — We Work Remotely — 15.6 hours old
 
 ## Source errors
 
