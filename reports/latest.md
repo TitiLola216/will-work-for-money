@@ -1,6 +1,6 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-10-01T23:56:41.669533+00:00
+Run time (UTC): 2026-10-02T23:50:47.567447+00:00
 Leads returned: 1
 
 ## Apply now — direct ATS verified
@@ -8,7 +8,7 @@ Leads returned: 1
 
 ## Review today — live discovery leads
 
-- [Limitless Technology: Japanese Speaking Customer Service Agent - for Netflix Japan](https://weworkremotely.com/remote-jobs/limitless-technology-japanese-speaking-customer-service-agent-for-netflix-japan) — Limitless Technology — We Work Remotely — 15.3 hours old
+- [6sense: Manager, Customer Success - Upmarket](https://weworkremotely.com/remote-jobs/6sense-manager-customer-success-upmarket) — 6sense — We Work Remotely — 16.3 hours old
 
 ## Source errors
 
