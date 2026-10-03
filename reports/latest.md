@@ -1,6 +1,6 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-10-02T23:50:47.567447+00:00
+Run time (UTC): 2026-10-03T23:09:38.365028+00:00
 Leads returned: 1
 
 ## Apply now — direct ATS verified
@@ -8,7 +8,7 @@ Leads returned: 1
 
 ## Review today — live discovery leads
 
-- [6sense: Manager, Customer Success - Upmarket](https://weworkremotely.com/remote-jobs/6sense-manager-customer-success-upmarket) — 6sense — We Work Remotely — 16.3 hours old
+- [Webflow: IT Support Specialist](https://weworkremotely.com/remote-jobs/webflow-it-support-specialist) — Webflow — We Work Remotely — 15.6 hours old
 
 ## Source errors
 
