@@ -1,6 +1,6 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-10-11T23:43:54.003633+00:00
+Run time (UTC): 2026-10-13T02:05:43.409492+00:00
 Leads returned: 1
 
 ## Apply now — direct ATS verified
@@ -8,7 +8,7 @@ Leads returned: 1
 
 ## Review today — live discovery leads
 
-- [Maven Clinic: Customer Success Director](https://weworkremotely.com/remote-jobs/maven-clinic-customer-success-director) — Maven Clinic — We Work Remotely — 16.2 hours old
+- [Rubrik Job Board: Customer Resilience Manager - Customer Success (Remote)](https://weworkremotely.com/remote-jobs/rubrik-job-board-customer-resilience-manager-customer-success-remote) — Rubrik Job Board — We Work Remotely — 18.6 hours old
 
 ## Source errors
 
