@@ -1,14 +1,15 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-10-30T23:53:31.988595+00:00
-Leads returned: 1
+Run time (UTC): 2026-10-31T23:27:23.488345+00:00
+Leads returned: 2
 
 ## Apply now — direct ATS verified
 
 
 ## Review today — live discovery leads
 
-- [Prospex CRM: Business Development Specialist](https://weworkremotely.com/remote-jobs/prospex-crm-business-development-specialist) — Prospex CRM — We Work Remotely — 4.0 hours old
+- [Axon: Sr Technical Support Representative](https://weworkremotely.com/remote-jobs/axon-sr-technical-support-representative) — Axon — We Work Remotely — 7.5 hours old
+- [Alloy: Technical Support Engineer, Triage & Discovery](https://weworkremotely.com/remote-jobs/alloy-technical-support-engineer-triage-discovery) — Alloy — We Work Remotely — 15.9 hours old
 
 ## Source errors
 
