@@ -1,6 +1,6 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-11-03T02:25:24.082160+00:00
+Run time (UTC): 2026-11-04T00:40:09.558159+00:00
 Leads returned: 1
 
 ## Apply now — direct ATS verified
@@ -8,7 +8,7 @@ Leads returned: 1
 
 ## Review today — live discovery leads
 
-- [Ninja Partners LLC: Customer Service Representative II (Seasonal)](https://weworkremotely.com/remote-jobs/ninja-partners-llc-customer-service-representative-ii-seasonal) — Ninja Partners LLC — We Work Remotely — 9.4 hours old
+- [M-Kopa: Senior CRM Manager](https://weworkremotely.com/remote-jobs/m-kopa-senior-crm-manager) — M-Kopa — We Work Remotely — 7.5 hours old
 
 ## Source errors
 
