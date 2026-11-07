@@ -1,14 +1,14 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-11-07T00:08:31.025437+00:00
-Leads returned: 0
+Run time (UTC): 2026-11-07T23:40:10.868469+00:00
+Leads returned: 1
 
 ## Apply now — direct ATS verified
 
 
 ## Review today — live discovery leads
 
-No lead was returned by the configured sources in this 24-hour window.
+- [Knowt Inc.: Customer Success Manager (K-12)](https://weworkremotely.com/remote-jobs/knowt-inc-customer-success-manager-k-12) — Knowt Inc. — We Work Remotely — 6.7 hours old
 
 ## Source errors
 
