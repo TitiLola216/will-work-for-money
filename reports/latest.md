@@ -1,15 +1,17 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-11-11T00:41:52.819624+00:00
-Leads returned: 2
+Run time (UTC): 2026-11-12T01:55:34.270940+00:00
+Leads returned: 4
 
 ## Apply now — direct ATS verified
 
 
 ## Review today — live discovery leads
 
-- [EdgeQ Technologies Private Limited: IT Support Specialist](https://weworkremotely.com/remote-jobs/edgeq-technologies-private-limited-it-support-specialist) — EdgeQ Technologies Private Limited — We Work Remotely — 7.7 hours old
-- [Experian: Salesforce CRM Team Lead](https://weworkremotely.com/remote-jobs/experian-salesforce-crm-team-lead) — Experian — We Work Remotely — 8.0 hours old
+- [D2B: Bookkeeper & Admin Support Specialist - Dayshift Remote](https://weworkremotely.com/remote-jobs/d2b-bookkeeper-admin-support-specialist-dayshift-remote) — D2B — We Work Remotely — 8.9 hours old
+- [PRISM+: Customer Service Officer Offshore (Remote)](https://weworkremotely.com/remote-jobs/prism-customer-service-officer-offshore-remote) — PRISM+ — We Work Remotely — 8.9 hours old
+- [D2B: E-commerce & Operations Coordinator (Pharma/Supplements) - NZ](https://weworkremotely.com/remote-jobs/d2b-e-commerce-operations-coordinator-pharma-supplements-nz) — D2B — We Work Remotely — 8.9 hours old
+- [D2B: Customer Service Admin - (AU Experience Required)](https://weworkremotely.com/remote-jobs/d2b-customer-service-admin-au-experience-required) — D2B — We Work Remotely — 8.9 hours old
 
 ## Source errors
 
