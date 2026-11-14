@@ -1,6 +1,6 @@
 # Latest lead-producing multi-source report
 
-Run time (UTC): 2026-11-14T00:54:37.468519+00:00
+Run time (UTC): 2026-11-14T23:57:51.133558+00:00
 Leads returned: 1
 
 ## Apply now — direct ATS verified
@@ -8,7 +8,7 @@ Leads returned: 1
 
 ## Review today — live discovery leads
 
-- [DLN Consulting Group: Customer Service Representative-Remote](https://weworkremotely.com/remote-jobs/dln-consulting-group-customer-service-representative-remote) — DLN Consulting Group — We Work Remotely — 8.9 hours old
+- [Cardata: Customer Success Manager](https://weworkremotely.com/remote-jobs/cardata-customer-success-manager) — Cardata — We Work Remotely — 7.0 hours old
 
 ## Source errors
 
